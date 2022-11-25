@@ -1,6 +1,9 @@
-const prompt=require("prompt-sync")({sigint:true});
-class AddressBook {
 
+const prompt=require("prompt-sync")({sigint:true});
+
+// Class 
+class AddressBook {
+// Method To Create Map Key For Uniqueness Fname & Lname
     newAddressBookNameEnter(){
         try{
             var firstName=prompt("Enter FirstName  ");
@@ -15,7 +18,7 @@ class AddressBook {
         return(firstName+" "+lastName);     
         }
 
-
+// Method To Create Mao Value 
     newAddressBookDataEnter(){
         
 try{
@@ -34,6 +37,7 @@ catch(err){
 
 }       
 }
+//Regex Method 
 regexPatternForName(pattern){
     let nameRegex = /^[A-Z]{1}[a-zA-Z]{2,}$/;
     if(nameRegex.test(pattern))
@@ -46,6 +50,7 @@ regexPatternForName(pattern){
       }
     }
 
+//Regex Method
         regexPatternForAddress_State(pattern){
             let addresRegex = /^[A-Z]{1}[a-zA-Z]{3,}$/;
             if(addresRegex.test(pattern))
@@ -58,7 +63,7 @@ regexPatternForName(pattern){
               }
             }
     
-
+//Regex Method
          regexPatternMobile(pattern){
             let pinCodeRegex = /^[0-9]{10}$/;
             if(pinCodeRegex.test(pattern))
@@ -70,6 +75,8 @@ regexPatternForName(pattern){
                 throw "Enter Valid Number";
               }
             }
+
+            //Regex Method
             regexPatternPinCode(pattern){
                 let pinCodeRegex = /^[0-9]{6}$/;
                 if(pinCodeRegex.test(pattern))
@@ -81,6 +88,8 @@ regexPatternForName(pattern){
                     throw "Enter Valid Pincode";
                   }
                 }
+
+                //Regex Method
     regexPatternForEmail(pattern){
            let pinCodeRegex = /^[a-zA-Z]+[.+-]?[A-Za-z0-9]*[@][A-Za-z0-9]+[.+-][A-Za-z0-9]{2,}[.]*[A-Za-z]*$/;
            if(pinCodeRegex.test(pattern))
@@ -92,19 +101,22 @@ regexPatternForName(pattern){
             throw "Enter Valid Email";
            }
     }
+
+    //Method To Search By City And Print
     serachByCity(){
         var state=prompt("Enter The City Name");
         for(key of storeData.keys()){
             var value=storeData.get(key);
             var data = value.split(" ");
         if(state==data[0]){
-        console.log(key);
+        console.log(key+"  "+storeData.get(key));
         }
         }
     }
 }
 
 
+// Function To Operate Class & Method 
 function multipleAddressBook(){ 
     storeData.set(obj.newAddressBookNameEnter(),obj.newAddressBookDataEnter());
     console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data   4-Serach By City")
@@ -127,6 +139,7 @@ function multipleAddressBook(){
         default:console.log("Enter Incorrect Option");
     }
 }
+// Creating Object of Class and Create Map To Store The data
 var storeData=new Map();
 var obj=new AddressBook();
 multipleAddressBook();
