@@ -116,6 +116,5 @@ function multipleAddressBook(){
 var storeData=new Map();
 var obj=new AddressBook();
 multipleAddressBook();
-console.log("Number Of Enteries Is : "+storeData.size);
 
 
