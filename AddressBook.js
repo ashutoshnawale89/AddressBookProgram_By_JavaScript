@@ -27,7 +27,7 @@ var pincode =prompt("Enter pincode  ");
 this.regexPatternPinCode(pincode);
 var email=prompt("Enter Email  ");
 this.regexPatternForEmail(email);
-return(phoneNumber+"  "+address+"  "+pincode+"  "+email);
+return(phoneNumber+" "+address+" "+pincode+" "+email);
 }
 catch(err){
     console.log(err);
@@ -92,11 +92,22 @@ regexPatternForName(pattern){
             throw "Enter Valid Email";
            }
     }
+    serachByCity(){
+        var state=prompt("Enter The City Name");
+        for(key of storeData.keys()){
+            var value=storeData.get(key);
+            var data = value.split(" ");
+        if(state==data[0]){
+        console.log(key);
+        }
+        }
+    }
 }
+
 
 function multipleAddressBook(){ 
     storeData.set(obj.newAddressBookNameEnter(),obj.newAddressBookDataEnter());
-    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data")
+    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data   4-Serach By City")
     var num=parseInt(prompt("Enter Number  "));
     switch(num){
         case(1): multipleAddressBook();
@@ -109,6 +120,9 @@ function multipleAddressBook(){
         var delt=(firstNam+" "+lastNam);  
         storeData.delete(delt);
         console.log(storeData);
+        break;
+        case(4):    
+        obj.serachByCity();
         break;
         default:console.log("Enter Incorrect Option");
     }
