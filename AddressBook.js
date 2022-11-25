@@ -105,13 +105,16 @@ regexPatternForName(pattern){
     //Method To Search By City And Print
     serachByCity(){
         var state=prompt("Enter The City Name");
+        var count=0;
         for(key of storeData.keys()){
             var value=storeData.get(key);
             var data = value.split(" ");
         if(state==data[0]){
         console.log(key+"  "+storeData.get(key));
+        count++;
         }
         }
+        console.log("The Number Of Person Available In City Is : "+count);
     }
 }
 
