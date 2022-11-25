@@ -116,13 +116,25 @@ regexPatternForName(pattern){
         }
         console.log("The Number Of Person Available In City Is : "+count);
     }
+
+    //  Sort By Name 
+    sortByName(){
+        var arr=new Array();
+        for(key of storeData.keys()){
+        var num1=key;
+        var num2=storeData.get(key);
+        arr.push(num1+" "+num2);
+        }
+       arr.sort();
+       console.log(arr);
+    }
 }
 
 
 // Function To Operate Class & Method 
 function multipleAddressBook(){ 
     storeData.set(obj.newAddressBookNameEnter(),obj.newAddressBookDataEnter());
-    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data   4-Serach By City")
+    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data   4-Serach By City  5-Sort By Name")
     var num=parseInt(prompt("Enter Number  "));
     switch(num){
         case(1): multipleAddressBook();
@@ -138,6 +150,9 @@ function multipleAddressBook(){
         break;
         case(4):    
         obj.serachByCity();
+        break;
+        case(5):
+        obj.sortByName();
         break;
         default:console.log("Enter Incorrect Option");
     }
