@@ -1,13 +1,24 @@
 const prompt=require("prompt-sync")({sigint:true});
 class AddressBook {
 
+    newAddressBookNameEnter(){
+        try{
+            var firstName=prompt("Enter FirstName  ");
+        this.regexPatternForName(firstName);
+        var lastName=prompt("Enter LastName  "); 
+        this.regexPatternForName(lastName);
+        }
+        catch(err){
+            console.log(err);
+        
+        }  
+        return(firstName+"  "+lastName);     
+        }
+
+
     newAddressBookDataEnter(){
         
 try{
-    var firstName=prompt("Enter FirstName  ");
-this.regexPatternForName(firstName);
-var lastName=prompt("Enter LastName  "); 
-this.regexPatternForName(lastName);
 var phoneNumber =prompt("Enter Number  ");
 this.regexPatternMobile(phoneNumber);
 var address=prompt("Enter Address  ");
@@ -16,25 +27,25 @@ var pincode =prompt("Enter pincode  ");
 this.regexPatternPinCode(pincode);
 var email=prompt("Enter Email  ");
 this.regexPatternForEmail(email);
-return(firstName+"  "+lastName+"  "+phoneNumber+"  "+address+"  "+pincode+"  "+email);
+return(phoneNumber+"  "+address+"  "+pincode+"  "+email);
 }
 catch(err){
     console.log(err);
 
 }       
 }
+regexPatternForName(pattern){
+    let nameRegex = /^[A-Z]{1}[a-zA-Z]{2,}$/;
+    if(nameRegex.test(pattern))
+     {
+        console.log("true");
+     }else
+     {
+        console.log("false");
+        throw "Enter Valid Name";
+      }
+    }
 
-    regexPatternForName(pattern){
-        let nameRegex = /^[A-Z]{1}[a-zA-Z]{2,}$/;
-        if(nameRegex.test(pattern))
-         {
-            console.log("true");
-         }else
-         {
-            console.log("false");
-            throw "Enter Valid Name";
-          }
-        }
         regexPatternForAddress_State(pattern){
             let addresRegex = /^[A-Z]{1}[a-zA-Z]{3,}$/;
             if(addresRegex.test(pattern))
@@ -83,9 +94,9 @@ catch(err){
     }
 }
 
-function multipleAddressBook(){  
-    storeData.push(obj.newAddressBookDataEnter());
-    console.log("1- Add Another Person     2-Close Book")
+function multipleAddressBook(){ 
+    storeData.set(obj.newAddressBookNameEnter(),obj.newAddressBookDataEnter());
+    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book")
     var num=parseInt(prompt("Enter Number  "));
     switch(num){
         case(1): multipleAddressBook();
@@ -95,6 +106,7 @@ function multipleAddressBook(){
         default:console.log("Enter Incorrect Option");
     }
 }
-var storeData=new Array();
+var storeData=new Map();
 var obj=new AddressBook();
-multipleAddressBook();
+multipleAddressBook();2
+
