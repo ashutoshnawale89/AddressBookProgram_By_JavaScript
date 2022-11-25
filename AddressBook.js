@@ -12,7 +12,7 @@ class AddressBook {
             console.log(err);
         
         }  
-        return(firstName+"  "+lastName);     
+        return(firstName+" "+lastName);     
         }
 
 
@@ -96,12 +96,19 @@ regexPatternForName(pattern){
 
 function multipleAddressBook(){ 
     storeData.set(obj.newAddressBookNameEnter(),obj.newAddressBookDataEnter());
-    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book")
+    console.log("1- Add And Edit  Data In AddressBook By Person Name     2-Close Book    3-To Delete The Data")
     var num=parseInt(prompt("Enter Number  "));
     switch(num){
         case(1): multipleAddressBook();
         break;
         case(2): console.log(storeData);
+        break;
+        case(3):
+        var firstNam=prompt("Enter FirstName  ");
+        var lastNam=prompt("Enter LastName  "); 
+        var delt=(firstNam+" "+lastNam);  
+        storeData.delete(delt);
+        console.log(storeData);
         break;
         default:console.log("Enter Incorrect Option");
     }
