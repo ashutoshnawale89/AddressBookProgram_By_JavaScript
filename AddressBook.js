@@ -1,7 +1,8 @@
+const prompt=require("prompt-sync")({sigint:true});
 class AddressBook {
 
     newAddressBookDataEnter(){
-        const prompt=require("prompt-sync")({sigint:true});
+        
 try{
     var firstName=prompt("Enter FirstName  ");
 this.regexPatternForName(firstName);
@@ -15,7 +16,7 @@ var pincode =prompt("Enter pincode  ");
 this.regexPatternPinCode(pincode);
 var email=prompt("Enter Email  ");
 this.regexPatternForEmail(email);
-console.log(firstName+"  "+lastName+"  "+phoneNumber+"  "+address+"  "+pincode+"  "+email);
+return(firstName+"  "+lastName+"  "+phoneNumber+"  "+address+"  "+pincode+"  "+email);
 }
 catch(err){
     console.log(err);
@@ -82,5 +83,18 @@ catch(err){
     }
 }
 
+function multipleAddressBook(){  
+    storeData.push(obj.newAddressBookDataEnter());
+    console.log("1- Add Another Person     2-Close Book")
+    var num=parseInt(prompt("Enter Number  "));
+    switch(num){
+        case(1): multipleAddressBook();
+        break;
+        case(2): console.log(storeData);
+        break;
+        default:console.log("Enter Incorrect Option");
+    }
+}
+var storeData=new Array();
 var obj=new AddressBook();
-    obj.newAddressBookDataEnter();
+multipleAddressBook();
